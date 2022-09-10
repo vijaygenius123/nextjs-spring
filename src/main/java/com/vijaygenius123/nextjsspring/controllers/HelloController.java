@@ -4,12 +4,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/healthcheck")
 public class HelloController {
 
     @GetMapping("")
-    String helloWorld() {
-        return "Hello World";
+    String helloWorld(Principal principal) {
+        System.out.println(principal);
+        return "Hello World, " + principal.getName();
     }
 }
